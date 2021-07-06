@@ -37,21 +37,21 @@ func createSigner() core.Signer {
 
 	//fmt.Printf("accesKey: %s secretKey: %s\n", accesKey, secretKey)
 
-	s := core.Signer{
+	signer := core.Signer{
 		Key:    accesKey,
 		Secret: secretKey,
 	}
 
-	return s
+	return signer
 }
 
 func makeRequest(reqUrl string) {
-	var s = createSigner()
+	var signer = createSigner()
 
 	req, _ := http.NewRequest("GET", reqUrl, ioutil.NopCloser(bytes.NewBuffer([]byte(""))))
 
 	req.Header.Add("content-type", "application/json")
-	s.Sign(req)
+	signer.Sign(req)
 
 	client := http.DefaultClient
 	resp, err := client.Do(req)
