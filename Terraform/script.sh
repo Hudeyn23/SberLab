@@ -7,4 +7,4 @@ mkdir /root/SberLab
 git clone https://github.com/borodun/SberLab.git /root/SberLab/
 cd /root/SberLab/Server/
 go build
-./Server
+/root/SberLab/Server/Server
