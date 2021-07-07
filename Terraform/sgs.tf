@@ -10,6 +10,12 @@ locals {
       port = 80,
       source = "0.0.0.0/0"
     },
+    http-rule = {
+      description = "Allow HTTP to our server on port 9999",
+      protocol = "tcp",
+      port = 9999,
+      source = "0.0.0.0/0"
+    },
     lb-http-rule = {
       description = "Allow HTTP for load balancer",
       protocol = "tcp",
