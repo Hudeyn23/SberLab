@@ -48,8 +48,8 @@ resource "sbercloud_nat_dnat_rule" "dnat_02" {
   nat_gateway_id = sbercloud_nat_gateway.nat_01.id
   private_ip = sbercloud_compute_instance.ecs_master.access_ip_v4
   protocol = "tcp"
-  internal_service_port = 80
-  external_service_port = var.serverPort
+  internal_service_port = var.serverPort
+  external_service_port = 80
 
   //source_type = 0  // We need that field, sber!!!!!
 }

@@ -13,7 +13,7 @@ resource "sbercloud_compute_instance" "ecs_01" {
 
   name = "ecs-${count.index}"
   image_id = data.sbercloud_images_image.ubuntu_image.id
-  flavor_id = "s6.medium.2"
+  flavor_id = "s6.large.2"
   security_groups = [sbercloud_networking_secgroup.sg_01.name]
   availability_zone = "ru-moscow-1a"
   key_pair = "KeyPair-borodin"
@@ -32,7 +32,7 @@ resource "sbercloud_compute_instance" "ecs_01" {
 resource "sbercloud_compute_instance" "ecs_master" {
   name = "ecs-master"
   image_id = data.sbercloud_images_image.ubuntu_image.id
-  flavor_id = "s6.medium.2"
+  flavor_id = "s6.large.2"
   security_groups = [sbercloud_networking_secgroup.sg_01.name]
   availability_zone = "ru-moscow-1a"
   key_pair = "KeyPair-borodin"
