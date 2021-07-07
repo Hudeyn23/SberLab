@@ -5,6 +5,6 @@ apt upgrade -y
 apt install -y golang
 mkdir /root/SberLab
 git clone https://github.com/borodun/SberLab.git /root/SberLab/
-cd /root/SberLab/Server/ || exit
+cd /root/SberLab/Server/
 go build
 ./Server
