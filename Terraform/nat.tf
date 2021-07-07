@@ -2,6 +2,10 @@ variable "natName" {
   description = "Name of NAT"
 }
 
+variable "serverPort" {
+  description = "Port on which server is listening"
+}
+
 resource "sbercloud_vpc_eip" "nat_eip" {
   publicip {
     type = "5_bgp"
@@ -35,6 +39,17 @@ resource "sbercloud_nat_dnat_rule" "dnat_01" {
   protocol = "tcp"
   internal_service_port = 22
   external_service_port = 22
+
+  //source_type = 0  // We need that field, sber!!!!!
+}
+
+resource "sbercloud_nat_dnat_rule" "dnat_02" {
+  floating_ip_id = sbercloud_vpc_eip.nat_eip.id
+  nat_gateway_id = sbercloud_nat_gateway.nat_01.id
+  private_ip = sbercloud_compute_instance.ecs_master.access_ip_v4
+  protocol = "tcp"
+  internal_service_port = 80
+  external_service_port = var.serverPort
 
   //source_type = 0  // We need that field, sber!!!!!
 }

@@ -18,8 +18,11 @@ resource "sbercloud_compute_instance" "ecs_01" {
   availability_zone = "ru-moscow-1a"
   key_pair = "KeyPair-borodin"
 
+  user_data = file("./script.sh")
+
   system_disk_type = "SAS"
   system_disk_size = 20
+
 
   network {
     uuid = sbercloud_vpc_subnet.subnet_01.id
@@ -34,8 +37,11 @@ resource "sbercloud_compute_instance" "ecs_master" {
   availability_zone = "ru-moscow-1a"
   key_pair = "KeyPair-borodin"
 
+  user_data = file("./script.sh")
+
   system_disk_type = "SAS"
   system_disk_size = 20
+
 
   network {
     uuid = sbercloud_vpc_subnet.subnet_01.id

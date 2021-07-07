@@ -14,6 +14,7 @@ secondaryDNS = "8.8.8.8"
 
 #NAT
 natName = "nat-1"
+serverPort = 9999
 
 #ELB
 elbName = "elb-1"

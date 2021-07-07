@@ -30,21 +30,21 @@ resource "sbercloud_networking_eip_associate" "elb_eip_associate" {
 
 resource "sbercloud_lb_listener" "listener_01" {
   name = var.listenerName
-  protocol = "HTTP"
+  protocol = "TCP"
   protocol_port = 80
   loadbalancer_id = sbercloud_lb_loadbalancer.elb_01.id
 }
 
 resource "sbercloud_lb_pool" "backend_pool" {
   name = "Backend servers group for ELB"
-  protocol = "HTTP"
+  protocol = "TCP"
   lb_method = "ROUND_ROBIN"
   listener_id = sbercloud_lb_listener.listener_01.id
 }
 
 resource "sbercloud_lb_monitor" "elb_health_check" {
   name = "Health check for ECS"
-  type = "HTTP"
+  type = "TCP"
   url_path = "/"
   expected_codes = "200-202"
   delay = 10
@@ -58,7 +58,7 @@ resource "sbercloud_lb_member" "backend_server" {
 
   address = sbercloud_compute_instance.ecs_01[count.index].access_ip_v4
 
-  protocol_port = 80
+  protocol_port = var.serverPort
   pool_id = sbercloud_lb_pool.backend_pool.id
   subnet_id = sbercloud_vpc_subnet.subnet_01.subnet_id
 
