@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>My Todo App!</h1>
+    <h1>UI for Terraform</h1>
     <TodoList/>
   </div>
 </template>

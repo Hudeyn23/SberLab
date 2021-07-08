@@ -2,7 +2,7 @@
   <div>
     <input
         v-model="newTodoText"
-        placeholder="New todo"
+        placeholder="New todo text"
         v-on:keydown.enter="addTodo"
     />
     <ul v-if="todos.length">
@@ -17,6 +17,11 @@
     <p v-else>
       Nothing left in the list. Add a new todo in the input above.
     </p>
+    <p>Number of todos: {{ todosCount }}</p>
+    <div id="button">
+      <button v-on:click="counter += 1">Add 1</button>
+      <p>The button above has been clicked {{ counter }} times.</p>
+    </div>
   </div>
 </template>
 
@@ -34,10 +39,12 @@ export default {
     TodoListItem
   },
 
+
   data() {
     return {
       newTodoText: '',
-      todos: []
+      todos: [],
+      counter: 0,
     }
   },
   created() {
@@ -49,6 +56,13 @@ export default {
     }, error => {
       console.error(error);
     });
+  },
+  computed: {
+    // a computed getter
+    todosCount() {
+      // `this` points to the vm instance
+      return this.todos.length
+    }
   },
   methods: {
     addTodo() {
@@ -92,7 +106,7 @@ export default {
       }, error => {
         console.error(error);
       });
-    }
+    },
   }
 }
 </script>

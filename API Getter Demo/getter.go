@@ -48,7 +48,7 @@ func createSigner() core.Signer {
 func makeRequest() {
 	var s = createSigner()
 
-	req, _ := http.NewRequest("GET", "https://ecs.ru-moscow-1.hc.sbercloud.ru/v1/0b5a73ddd98027372f2ec00668b88856/cloudservers/detail?offset=1&limit=10", ioutil.NopCloser(bytes.NewBuffer([]byte(""))))
+	req, _ := http.NewRequest("GET", "https://ecs.ru-moscow-1.hc.sbercloud.ru/v1/0b5a73ddd98027372f2ec00668b88856/todos/detail?offset=1&limit=10", ioutil.NopCloser(bytes.NewBuffer([]byte(""))))
 
 	req.Header.Add("content-type", "application/json")
 	s.Sign(req)

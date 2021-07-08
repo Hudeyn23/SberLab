@@ -1,0 +1,3 @@
+#!/bin/sh
+
+curl -X POST --header 'Auth: sberlabnsu:2021' --header 'Content-Type: application/json' 'localhost:9090/v1/sdfsf/todos' -v -d '{"name": "myVM"}'
