@@ -33,7 +33,7 @@ func hmacsha256(key []byte, data string) ([]byte, error) {
 	return h.Sum(nil), nil
 }
 
-// Build a CanonicalRequest from a regular request string
+// Build a CanonicalRequest from a regular requester string
 //
 // CanonicalRequest =
 //  HTTPRequestMethod + '\n' +
@@ -60,7 +60,7 @@ func CanonicalRequest(r *http.Request, signedHeaders []string) (string, error) {
 	return fmt.Sprintf("%s\n%s\n%s\n%s\n%s\n%s", r.Method, CanonicalURI(r), CanonicalQueryString(r), CanonicalHeaders(r, signedHeaders), strings.Join(signedHeaders, ";"), hexencode), err
 }
 
-// CanonicalURI returns request uri
+// CanonicalURI returns requester uri
 func CanonicalURI(r *http.Request) string {
 	pattens := strings.Split(r.URL.Path, "/")
 	var uri []string

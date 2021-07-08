@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <h1>UI for Terraform</h1>
+    <h1>Get ECS list</h1>
     <TodoList/>
   </div>
 </template>
 
 <script>
-import TodoList from './components/TodoList.vue'
+import TodoList from './components/SberButton.vue'
 
 export default {
   components: {
