@@ -1,9 +1,9 @@
-FROM alpine:latest
+FROM golang:1.16.5-buster
 
-WORKDIR /opt/sbapi
-
+WORKDIR /back
+COPY ./ .
 EXPOSE 9999
 
-ADD ./target/sbapi sbapi
+RUN go build
 
-ENTRYPOINT ["/opt/sbapi/sbapi"]
+CMD [ "./backend" ]
